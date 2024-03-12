@@ -1,0 +1,102 @@
+
+.questionnaire-container {
+    background-color: #7E599E;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    height: 100vh;
+   
+  }
+
+  @media (min-width: 768px) {
+    .questionnaire-container {
+      padding: 50px;
+    }}
+
+  .questionnaire-container h1 {
+    font-size: 3rem;  
+    color: #f2f1ee; 
+    /*#42403c*/
+    text-align: center; 
+    margin-bottom: 45px; 
+    margin-top: 20px; 
+    font-weight: bold;  
+    text-shadow: 1px 1px 2px #000;
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  
+  .grid-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 20rem;
+  }
+  
+  /* .emoji-container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin:30px;
+  }
+   */
+  .emoji-link {
+    font-size: 6rem;
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .emoji-name {
+    margin-top: 10px;
+    color: #ffffff;
+    font-size: 30px;
+  }
+  
+/* .images-container {
+    display: flex;
+    justify-content: space-around; /* Adjust spacing between emojis */
+    /* margin-top: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+    justify-content: center; Center-align emoji containers */
+  /* } */
+   
+  /* .emoji-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 40px; /* Add spacing around each emoji container */
+  /* }  */
+  
+  /* .emoji-link {
+    font-size: 3rem; /* Adjust emoji size */
+  /* } */ 
+  
+  /* .large{
+    font-size: 7rem;
+} */
+ 
+.emoji-container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid #353533; /* Add border around emoji container */
+    border-radius: 30px; /* Add border radius for rounded corners */
+    border-width: 5px;
+    width:10rem;
+    margin-top: 40px;
+    margin-bottom: 60px;
+    padding: 20px; /* Add padding for spacing */
+}
+
+.emoji-container a{
+    text-decoration: none;
+}

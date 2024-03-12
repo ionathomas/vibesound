@@ -1,0 +1,50 @@
+.webcam-container {
+    margin-top: 20px;
+    margin-bottom: 20px; /* Adjust margin as needed */
+   
+    
+  }
+  
+  .webcam {
+    transform: scaleX(-1);  /*Flip the webcam feed horizontally */
+    border-radius: 30px;
+  }
+
+  .face-analyzer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #7E599E;
+    height:100vh;
+    width: 100vw;
+  }
+  
+  .webcam-button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  h1 {
+    font-size: 2.2rem; 
+    color: #f2f1ee; 
+    /*#42403c*/
+    text-align: center; 
+    margin-bottom: 30px; 
+    margin-top: 30px;
+    font-weight: bold; 
+  }
+  
+  .capture-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 15px 30px;
+    background-color:#353533;;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition for background color and transform */
+    font-size: 1.2rem;
+    text-decoration: none;  }
+  
