@@ -10,6 +10,11 @@ import HomePage from "./HomePage";
 
 
 function Choice(){
+
+  const handlePage = (page) => {
+    window.location.href = `/${page}`;
+  }
+
   console.log(localStorage.getItem("accessToken"));
   return (
     <div className="choice-container" >
@@ -19,7 +24,7 @@ function Choice(){
         <div className="option">
           <h2>Face the Music</h2>
           <div className="camera-window">
-            <img src={cameraImage} alt="Camera Window" />
+            <img src={cameraImage} alt="Camera Window" onClick={()=> handlePage("FaceAnalyzer")}/>
           </div>
           <p>Let's detect your mood with our face analyzer.</p>
           <Link to="/FaceAnalyzer">
@@ -31,7 +36,7 @@ function Choice(){
         <div className="option">
           <h2>Form the Tune</h2>
           <div className="form-image">
-            <img src={formImage} alt="Form" />
+            <img src={formImage} alt="Form" onClick={()=> handlePage("EmojiQuiz")}/>
           </div>
           <p>Let's find how you are feeling with our emoji quiz.</p>
           <Link to="/EmojiQuiz">

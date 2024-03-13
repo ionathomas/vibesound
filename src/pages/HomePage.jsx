@@ -1,6 +1,6 @@
 import './HomePage.css';
 import musicalBackground from '../assets/bgmusic.jpeg'
-import ClientId from "./../spotify/config.json";
+import ClientId from "../spotify/config.json";
 import React, {useEffect} from "react";
 import Choice from "./choice";
 
