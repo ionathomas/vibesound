@@ -1,9 +1,22 @@
+import {useEffect, useState} from "react";
+import axios from "axios";
+
 function Results(keyword){
 
     const Keyword = new URLSearchParams(window.location.search).get("keyword");
     const code = localStorage.getItem("code");
+    const [token, setToken] = useState({});
 
-    console.log(code);
+
+    useEffect(() => {
+        axios.get("/recommendPlaylists?code="+code+"&keyword="+Keyword)
+        .then(function (response) {
+            console.log(response.data);
+        })
+        .catch(function (err) {
+            console.log(err);
+        });
+    });
 
     return (
         <div>

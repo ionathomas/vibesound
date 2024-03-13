@@ -185,3 +185,4 @@ yarn-error.log*
 
 #Config file
 /src/config.json
+/Backend/config.py
