@@ -6,26 +6,29 @@ import meditation from "../assets/Meditation.jpg";
 import './emoji.css';
 
 function Emoji() {
+
+  const handleKeyword = (keyword) => {
+    console.log(keyword);
+    window.location.href = `/results?keyword=${keyword}`;
+  }
+
   return (
     <div className="emoji-contain">
-      <h1>So you're feeling calm. Tell me more... </h1>
+      <h1>So you're feeling calm. <br/>Tell me more... </h1>
       <div className="emoji-grid">
-        <div className="card">
+        <div className="card" onClick={() => handleKeyword("chill")}>
           <img src={chill} alt="Form" />
           <div className="card-container">
-            <h4><b>Chill Vibes</b></h4> 
           </div>
         </div>
-        <div className="card">
+        <div className="card" onClick={() => handleKeyword("instrumental")}>
           <img src={instrumental} alt="Form" />
           <div className="card-container">
-            <h4><b>Instrumental</b></h4> 
           </div>
         </div>
-        <div className="card">
+        <div className="card" onClick={() => handleKeyword("meditation")}>
           <img src={meditation} alt="Form" />
           <div className="card-container">
-            <h4><b>Meditation</b></h4> 
           </div>
         </div>
       </div>

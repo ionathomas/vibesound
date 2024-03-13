@@ -3,28 +3,32 @@ import frustrated from "../assets/Feeling frustrated.png";
 import peace from "../assets/Finding Peace.png";
 import justAngry from "../assets/Just Angry.png";
 import './emoji.css';
+import results from "./results";
+import Results from "./results";
 
 function Emoji() {
+  const handleKeyword = (keyword) => {
+    console.log(keyword);
+    window.location.href = `/results?keyword=${keyword}`;
+  }
+
   return (
     <div className="emoji-contain">
-      <h1>So you are feeling angry. Tell me more... </h1>
+      <h1>So you are feeling angry. <br/>Tell me more... </h1>
       <div className="emoji-grid">
-        <div className="card">
-          <img src={frustrated} alt="Form" />
+        <div className="card" onClick={() => handleKeyword("frustrate")}>
+          <img src={frustrated} alt="Form"/>
           <div className="card-container">
-            <h4><b>Feeling frustrated</b></h4> 
           </div>
         </div>
-        <div className="card">
+        <div className="card" onClick={() => handleKeyword("release anger")}>
           <img src={peace} alt="Form" />
           <div className="card-container">
-            <h4><b>Finding Peace</b></h4> 
           </div>
         </div>
-        <div className="card">
+        <div className="card" onClick={() => handleKeyword("angry mix")}>
           <img src={justAngry} alt="Form" />
           <div className="card-container">
-            <h4><b>Just Angry</b></h4> 
           </div>
         </div>
       </div>

@@ -2,9 +2,9 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Questionnaire.css";
+import "./EmojiQuiz.css";
 
-function Questionnaire() {
+function EmojiQuiz() {
   return (
     <div className="questionnaire-container">
       <h1 className="question">How is your mood ?</h1>
@@ -77,4 +77,4 @@ function Questionnaire() {
   );
 }
 
-export default Questionnaire;
+export default EmojiQuiz;

@@ -5,11 +5,13 @@ import formImage from "../assets/right.jpg"; // Import image for form
 import './choice.css';
 //import mainBack from '../assets/backgroundNew.png'
 import SurpriseButton from '../components/Buttons/Surprise-Button';
+import HomePage from "./HomePage";
 
 
 
-function Choice() 
-  {return (
+function Choice(){
+  console.log(localStorage.getItem("accessToken"));
+  return (
     <div className="choice-container" >
       <h1>Personalized Music Recommendations Await !</h1>
       <div className="options-container">
@@ -32,7 +34,7 @@ function Choice()
             <img src={formImage} alt="Form" />
           </div>
           <p>Let's find how you are feeling with our emoji quiz.</p>
-          <Link to="/Questionnaire">
+          <Link to="/EmojiQuiz">
             <button className="option-button2">Quiz Zone</button>
           </Link>
         </div>

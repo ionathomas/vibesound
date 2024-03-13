@@ -5,26 +5,29 @@ import happyVibe from "../assets/Happy Vibes.png";
 import './emoji.css';
 
 function Emoji() {
+
+  const handleKeyword = (keyword) => {
+    console.log(keyword);
+    window.location.href = `/results?keyword=${keyword}`;
+  }
+
   return (
     <div className="emoji-contain">
-      <h1>So you're feeling happy. Tell me more... </h1>
+      <h1>So you're feeling happy. <br/>Tell me more... </h1>
       <div className="emoji-grid">
-        <div className="card">
+        <div className="card" onClick={() => handleKeyword("party")}>
           <img src={partyVibe} alt="Form" />
           <div className="card-container">
-            <h4><b>Party Vibes</b></h4> 
           </div>
         </div>
-        <div className="card">
+        <div className="card" onClick={() => handleKeyword("beach")}>
           <img src={beachVibe} alt="Form" />
           <div className="card-container">
-            <h4><b>Beach Vibes</b></h4> 
           </div>
         </div>
-        <div className="card">
+        <div className="card" onClick={() => handleKeyword("happy mix")}>
           <img src={happyVibe} alt="Form" />
           <div className="card-container">
-            <h4><b>Happy Vibes</b></h4> 
           </div>
         </div>
       </div>

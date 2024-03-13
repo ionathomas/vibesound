@@ -90,6 +90,7 @@
     align-items: center;
     border: 2px solid #353533; /* Add border around emoji container */
     border-radius: 30px; /* Add border radius for rounded corners */
+    background-color: #353533;
     border-width: 5px;
     width:10rem;
     margin-top: 40px;

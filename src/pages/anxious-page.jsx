@@ -5,26 +5,29 @@ import relax from "../assets/Relax.jpeg";
 import './emoji.css';
 
 function Emoji() {
+
+  const handleKeyword = (keyword) => {
+    console.log(keyword);
+    window.location.href = `/results?keyword=${keyword}`;
+  }
+
   return (
     <div className="emoji-contain">
-      <h1>So you're feeling anxious. Tell me more... </h1>
+      <h1>So you're feeling anxious. <br/>Tell me more... </h1>
       <div className="emoji-grid">
-        <div className="card">
+        <div className="card" onClick={() => handleKeyword("anti anxiety")}>
           <img src={anxiety} alt="Form" />
           <div className="card-container">
-            <h4><b>Anti-Anxiety</b></h4> 
           </div>
         </div>
-        <div className="card">
+        <div className="card" onClick={() => handleKeyword("focus")}>
           <img src={focus} alt="Form" />
           <div className="card-container">
-            <h4><b>Focus</b></h4> 
           </div>
         </div>
-        <div className="card">
+        <div className="card" onClick={() => handleKeyword("relax")}>
           <img src={relax} alt="Form" />
           <div className="card-container">
-            <h4><b>Relax</b></h4> 
           </div>
         </div>
       </div>
