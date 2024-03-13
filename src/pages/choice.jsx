@@ -3,19 +3,15 @@ import { Link } from "react-router-dom";
 import cameraImage from "../assets/left.png"; // Import image for camera window
 import formImage from "../assets/right.jpg"; // Import image for form
 import './choice.css';
-//import mainBack from '../assets/backgroundNew.png'
 import SurpriseButton from '../components/Buttons/Surprise-Button';
-import HomePage from "./HomePage";
-
-
 
 function Choice(){
 
+  localStorage.setItem("code",new URLSearchParams(window.location.search).get("code"))
   const handlePage = (page) => {
     window.location.href = `/${page}`;
   }
 
-  console.log(localStorage.getItem("accessToken"));
   return (
     <div className="choice-container" >
       <h1>Personalized Music Recommendations Await !</h1>
