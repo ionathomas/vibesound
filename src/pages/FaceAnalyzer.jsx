@@ -1,16 +1,24 @@
-import React from "react";
+import React, {useRef, useState} from "react";
 import Webcam from "react-webcam"; // Import Webcam component
 import './FaceAnalyzer.css';
+import axios from "axios";
 
 function FaceAnalyzer() {
   // Function to handle face capture
-  const capture = () => {
-    const imageSrc = webcamRef.current.getScreenshot();
-    // Process the captured image or send it for analysis
-  };
+  const webcamRef = useRef(null);
+  const [imgSrc, setImgSrc] = useState("");
 
-  // Reference to the webcam component
-  const webcamRef = React.useRef(null);
+  async function capture () {
+      const imageSrc = webcamRef.current.getScreenshot();
+
+      try {
+          await axios.post('/upload', {image: imageSrc});
+          console.log('Image sent to server.');
+          setImgSrc(imageSrc);
+      } catch (error) {
+          console.error('Error sending image to server:', error);
+      }
+  }
 
   return (
     <div className="face-analyzer-container">

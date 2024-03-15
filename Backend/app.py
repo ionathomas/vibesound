@@ -1,8 +1,9 @@
 #!/usr/bin/python3
+import base64
 
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
-from flask import Flask, url_for, session, request, redirect
+from flask import Flask, url_for, session, request, redirect, jsonify
 import json
 import time
 import secrets
@@ -14,14 +15,16 @@ app = Flask(__name__)
 app.secret_key = secrets.token_urlsafe(16)
 app.config['SESSION_COOKIE_NAME'] = 'spotify-login-session'
 
-def getAccessToken(code):
-    sp_oauth = spotifyOAuth()
-    session.clear()
-    code = request.values["code"]
-    token_info = sp_oauth.get_access_token(code)
-    token_info = checkToken(token_info)
-    session["token_info"] = token_info
-    print(token_info)
+
+@app.route('/upload', methods=['POST'])
+def upload():
+    image = request.json['image']
+    imageName = "test.jpg"
+    imagePath = f"./../src/Capture/{imageName}"
+    imageBuffer = base64.b64decode(image.split(',')[1])
+    with open(imagePath, 'wb') as f:
+        f.write(imageBuffer)
+    return jsonify({'message': 'Image saved'})
 
 
 # To get playlist suggestions based on keyword
@@ -34,7 +37,6 @@ def recommendPlaylists():
     sp = spotipy.Spotify(auth=session.get('token_info').get('access_token'))
     resultStr = json.dumps(sp.search(userKeyword, limit=10, offset=0, type='playlist', market='CA'))
     result = json.loads(resultStr)
-    print(result)
     for i in result['playlists']['items']:
         playlistDictionary = {'playlistID': i['id'], 'playlistName': i['name'],
                               'playlistBy': i['owner']['display_name'],
@@ -42,6 +44,17 @@ def recommendPlaylists():
                               'playlistURL': i['external_urls']['spotify']}
         playlists.append(playlistDictionary)
     return playlists
+
+
+# Get Access token from the code generated
+def getAccessToken(code):
+    sp_oauth = spotifyOAuth()
+    session.clear()
+    code = request.values["code"]
+    token_info = sp_oauth.get_access_token(code)
+    token_info = checkToken(token_info)
+    session["token_info"] = token_info
+    print(token_info)
 
 
 # Checks to see if token is valid and gets a new token if not
