@@ -10,7 +10,7 @@ function processKeyword(keyword) {
     else if (keyword === 'fear')
         keyword = 'anxious';
     else if (keyword === 'surprise')
-        keyword = 'anything';
+        keyword = 'niche';
     window.location.href = `/results?keyword=${keyword}`;
 }
 
