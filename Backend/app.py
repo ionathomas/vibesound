@@ -1,6 +1,9 @@
 #!/usr/bin/python3
 import base64
+import os
 
+from deepface import DeepFace
+import cv2
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 from flask import Flask, url_for, session, request, redirect, jsonify
@@ -19,12 +22,14 @@ app.config['SESSION_COOKIE_NAME'] = 'spotify-login-session'
 @app.route('/upload', methods=['POST'])
 def upload():
     image = request.json['image']
+    imageBuffer = base64.b64decode(image.split(',')[1])
     imageName = "test.jpg"
     imagePath = f"./../src/Capture/{imageName}"
     imageBuffer = base64.b64decode(image.split(',')[1])
     with open(imagePath, 'wb') as f:
         f.write(imageBuffer)
-    return jsonify({'message': 'Image saved'})
+    emotion = processImage(imagePath)
+    return jsonify({'emotion': emotion})
 
 
 # To get playlist suggestions based on keyword
@@ -74,6 +79,50 @@ def checkToken(token_info):
         session['token_info'] = token_info
 
     return token_info
+
+
+# Function to process the image and return the keyword
+def processImage(img_path):
+    emotion = {}
+    demography = []
+    img = cv2.imread(img_path)
+    try:
+        getEmotion = DeepFace.analyze(img, ['emotion'], detector_backend='ssd')
+        demography.append(getEmotion[0]['dominant_emotion'])
+        if demography[0] not in emotion:
+            emotion[demography[0]] = 1
+        else:
+            emotion[demography[0]] += 1
+    except:
+        pass
+
+    try:
+        getEmotion = DeepFace.analyze(img, ['emotion'], detector_backend='opencv')
+        demography.append(getEmotion[0]['dominant_emotion'])
+        if demography[1] not in emotion:
+            emotion[demography[1]] = 1
+        else:
+            emotion[demography[1]] += 1
+    except:
+        pass
+
+    try:
+        getEmotion = DeepFace.analyze(img, ['emotion'], detector_backend='mtcnn')
+        demography.append(getEmotion[0]['dominant_emotion'])
+        if demography[2] not in emotion:
+            emotion[demography[2]] = 1
+        else:
+            emotion[demography[2]] += 1
+    except:
+        pass
+
+    os.remove(img_path)
+    if len(demography) == 0:
+        return 404
+    elif emotion[max(emotion, key=lambda x: emotion[x])] > 1:
+        return max(emotion, key=lambda x: emotion[x])
+    else:
+        return demography[0]
 
 
 def spotifyOAuth():

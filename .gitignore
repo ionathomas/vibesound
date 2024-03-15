@@ -187,3 +187,5 @@ yarn-error.log*
 /src/config.json
 /Backend/config.py
 /Backend/.cache
+
+/src/Capture/*

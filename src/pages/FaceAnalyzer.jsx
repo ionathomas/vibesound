@@ -2,6 +2,7 @@ import React, {useRef, useState} from "react";
 import Webcam from "react-webcam"; // Import Webcam component
 import './FaceAnalyzer.css';
 import axios from "axios";
+import Results from "./results";
 
 function FaceAnalyzer() {
   // Function to handle face capture
@@ -12,7 +13,15 @@ function FaceAnalyzer() {
       const imageSrc = webcamRef.current.getScreenshot();
 
       try {
-          await axios.post('/upload', {image: imageSrc});
+          await axios.post('/upload', {image: imageSrc})
+              .then((response) => {
+                  console.log(response);
+                  if (response['data']['emotion'] === 404)
+                      console.log("Error in processing the image. Try again");
+                  else{
+                      window.location.href = `/results?keyword=${response['data']['emotion']}`;
+                  }
+              });
           console.log('Image sent to server.');
           setImgSrc(imageSrc);
       } catch (error) {
@@ -27,6 +36,7 @@ function FaceAnalyzer() {
         <Webcam
           audio={false}
           ref={webcamRef}
+          mirrored={false}
           screenshotFormat="image/jpeg"
           className="webcam"
         />
