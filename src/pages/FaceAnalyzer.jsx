@@ -4,6 +4,16 @@ import './FaceAnalyzer.css';
 import axios from "axios";
 import Results from "./results";
 
+function processKeyword(keyword) {
+    if (keyword === 'neutral')
+        keyword = 'calm';
+    else if (keyword === 'fear')
+        keyword = 'anxious';
+    else if (keyword === 'surprise')
+        keyword = 'anything';
+    window.location.href = `/results?keyword=${keyword}`;
+}
+
 function FaceAnalyzer() {
   // Function to handle face capture
   const webcamRef = useRef(null);
@@ -19,7 +29,7 @@ function FaceAnalyzer() {
                   if (response['data']['emotion'] === 404)
                       console.log("Error in processing the image. Try again");
                   else{
-                      window.location.href = `/results?keyword=${response['data']['emotion']}`;
+                      {processKeyword(response['data']['emotion'])}
                   }
               });
           console.log('Image sent to server.');
