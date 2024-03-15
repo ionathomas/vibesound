@@ -8,7 +8,7 @@ function processKeyword(keyword) {
     if (keyword === 'neutral')
         keyword = 'calm';
     else if (keyword === 'fear')
-        keyword = 'anxious';
+        keyword = 'anti-anxiety';
     else if (keyword === 'surprise')
         keyword = 'niche';
     window.location.href = `/results?keyword=${keyword}`;
