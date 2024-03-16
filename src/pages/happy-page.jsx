@@ -15,17 +15,17 @@ function Emoji() {
     <div className="emoji-contain">
       <h1>So you're feeling happy. <br/>Tell me more... </h1>
       <div className="emoji-grid">
-        <div className="card" onClick={() => handleKeyword("party")}>
+        <div className="card" onClick={() => handleKeyword("party vibes")}>
           <img src={partyVibe} alt="Form" />
           <div className="card-container">
           </div>
         </div>
-        <div className="card" onClick={() => handleKeyword("beach")}>
+        <div className="card" onClick={() => handleKeyword("beach vibes")}>
           <img src={beachVibe} alt="Form" />
           <div className="card-container">
           </div>
         </div>
-        <div className="card" onClick={() => handleKeyword("happy mix")}>
+        <div className="card" onClick={() => handleKeyword("happy vibes")}>
           <img src={happyVibe} alt="Form" />
           <div className="card-container">
           </div>

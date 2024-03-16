@@ -15,7 +15,7 @@ function Emoji() {
     <div className="emoji-contain">
       <h1>So you're feeling sad. <br/>Tell me more... </h1>
       <div className="emoji-grid">
-        <div className="card" onClick={() => handleKeyword("comfort")}>
+        <div className="card" onClick={() => handleKeyword("finding comfort")}>
           <img src={comfort} alt="Form" />
           <div className="card-container">
           </div>
@@ -25,7 +25,7 @@ function Emoji() {
           <div className="card-container">
           </div>
         </div>
-        <div className="card" onClick={() => handleKeyword("sad mix")}>
+        <div className="card" onClick={() => handleKeyword("just sad")}>
           <img src={sad} alt="Form" />
           <div className="card-container">
           </div>

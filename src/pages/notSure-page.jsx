@@ -15,12 +15,12 @@ function Emoji() {
     <div className="emoji-contain">
       <h1>So you're feeling anxious. <br/>Tell me more... </h1>
       <div className="emoji-grid">
-        <div className="card" onClick={() => handleKeyword("nostalgia")}>
+        <div className="card" onClick={() => handleKeyword("feeling nostalgic")}>
           <img src={nostalgic} alt="Form" />
           <div className="card-container">
           </div>
         </div>
-        <div className="card" onClick={() => handleKeyword("daily")}>
+        <div className="card" onClick={() => handleKeyword("anything")}>
           <img src={anything} alt="Form" />
           <div className="card-container">
           </div>

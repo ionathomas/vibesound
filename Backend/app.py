@@ -6,11 +6,12 @@ from deepface import DeepFace
 import cv2
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
-from flask import Flask, url_for, session, request, redirect, jsonify
+from flask import Flask, session, request, jsonify
 import json
 import time
 import secrets
 import config
+from keywordDictionary import key_dictionary
 
 # App config
 app = Flask(__name__)
@@ -36,11 +37,11 @@ def upload():
 @app.route('/recommendPlaylists')
 def recommendPlaylists():
     code = request.values["code"]
-    userKeyword = request.values["keyword"]
+    userKeyword = key_dictionary[request.values["keyword"]]
     getAccessToken(code)
     playlists = []
     sp = spotipy.Spotify(auth=session.get('token_info').get('access_token'))
-    resultStr = json.dumps(sp.search(userKeyword, limit=10, offset=0, type='playlist', market='CA'))
+    resultStr = json.dumps(sp.search(userKeyword, limit=15, offset=0, type='playlist'))
     result = json.loads(resultStr)
     for i in result['playlists']['items']:
         playlistDictionary = {'playlistID': i['id'], 'playlistName': i['name'],

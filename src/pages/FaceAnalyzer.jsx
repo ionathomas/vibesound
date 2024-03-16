@@ -2,17 +2,6 @@ import React, {useRef, useState} from "react";
 import Webcam from "react-webcam"; // Import Webcam component
 import './FaceAnalyzer.css';
 import axios from "axios";
-import Results from "./results";
-
-function processKeyword(keyword) {
-    if (keyword === 'neutral')
-        keyword = 'calm';
-    else if (keyword === 'fear')
-        keyword = 'anti-anxiety';
-    else if (keyword === 'surprise')
-        keyword = 'niche';
-    window.location.href = `/results?keyword=${keyword}`;
-}
 
 function FaceAnalyzer() {
   // Function to handle face capture
@@ -29,7 +18,7 @@ function FaceAnalyzer() {
                   if (response['data']['emotion'] === 404)
                       console.log("Error in processing the image. Try again");
                   else{
-                      {processKeyword(response['data']['emotion'])}
+                      window.location.href = `/results?keyword=${response['data']['emotion']}`;
                   }
               });
           console.log('Image sent to server.');
