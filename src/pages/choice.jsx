@@ -12,6 +12,14 @@ function Choice(){
     window.location.href = `/${page}`;
   }
 
+  const SurpriseButton = () => {
+    let x = Math.floor((Math.random() * 100) + 1);
+    if (x%2 === 0)
+      window.location.href = '/FaceAnalyzer';
+    else
+      window.location.href = '/EmojiQuiz';
+  }
+
   return (
     <div className="choice-container" >
       <h1>Personalized Music Recommendations Await !</h1>
@@ -27,8 +35,7 @@ function Choice(){
             <button className="option-button1">Face Analyzer</button>
           </Link>
         </div>
-        <button className="surprise-button" onClick={SurpriseButton} href="/Emoji">Surprise Me</button>
-        {/* Right half with form image */}
+        <button className="surprise-button" onClick={() => SurpriseButton()}>Surprise Me</button>
         <div className="option">
           <h2>Form the Tune</h2>
           <div className="form-image">
