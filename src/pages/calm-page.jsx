@@ -9,7 +9,7 @@ function Emoji() {
 
   const handleKeyword = (keyword) => {
     console.log(keyword);
-    window.location.href = `/results?keyword=${keyword}`;
+    window.location.href = `/recommendations?keyword=${keyword}`;
   }
 
   return (
