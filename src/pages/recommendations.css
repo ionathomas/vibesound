@@ -5,5 +5,59 @@
     /* justify-content: center; */
     align-items: center;
     height: 100vh;
-   
+  }
+
+  .card-container h5{
+    color: white;
+    text-align: center;
+    /* margin-left: 50px; Adjust as needed to control the separation */
+    font-style: italic; /* Optionally, style the author differently */
+  }
+
+  .card-container h4{
+    color: white;
+    text-align: center;
+  }
+
+  .card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .play-icon{
+    display: flex; /* Ensure children are in a flex layout */
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center children horizontally */
+    /* margin-top: 20px; Adjust as needed */
+  }
+
+  .fa-circle-play {
+    font-size: 40px;
+    color: white;
+  }
+
+ 
+    .home-icon {
+      position: absolute;
+      top: 20px; /* Adjust top position as needed */
+      left: 20px; /* Adjust left position as needed */
+    }
+  
+
+  .fa-house {
+    font-size: 30px;
+    color: white;
+  }
+
+   .refresh-icon {
+    display: flex; /* Ensure children are in a flex layout */
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center children horizontally */
+    /* margin-top: 20px; Adjust as needed */
+  }
+  
+  .fa-refresh {
+    font-size: 30px;
+    color: white;
   }
