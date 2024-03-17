@@ -3,6 +3,7 @@ import Webcam from "react-webcam"; // Import Webcam component
 import './FaceAnalyzer.css';
 import axios from "axios";
 
+
 function FaceAnalyzer() {
   // Function to handle face capture
   const webcamRef = useRef(null);
@@ -11,13 +12,19 @@ function FaceAnalyzer() {
       const imageSrc = webcamRef.current.getScreenshot();
 
       try {
+          const loader = document.getElementById("loader");
+          if(loader){
+              loader.style.display = "block"
+          }
           await axios.post('/upload', {image: imageSrc})
               .then((response) => {
                   console.log(response);
                   if (response['data']['emotion'] === 404){
                       const element = document.getElementById("ErrorMsg");
-                      if (element)
-                        element.style.visibility = "visible";
+                      if (element) {
+                          element.style.visibility = "visible";
+                          loader.style.display = "none"
+                      }
                       console.log("Error in processing the image. Try again");
                   }
                   else{
@@ -33,6 +40,7 @@ function FaceAnalyzer() {
   return (
     <div className="face-analyzer-container">
       <h1>Face Analyzer</h1>
+      <div id="loader" style={{display:"none"}}></div>
       <h3 id="ErrorMsg" style={{color:"darkred",
           textAlign:"center",
           visibility:"hidden"
