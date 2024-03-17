@@ -1,46 +1,53 @@
+import React from "react";
+import { Link } from "react-router-dom";
+import cameraImage from "../assets/left.png"; // Import image for camera window
+import formImage from "../assets/right.jpg"; // Import image for form
 import './HomePage.css';
-import musicalBackground from '../assets/bgmusic.jpeg'
-import ClientId from "../config.json";
-import React, {useEffect} from "react";
 
-const CLIENT_ID = ClientId['SPOTIFY_CLIENT_ID'];
-const SPOTIFY_AUTHORIZE_ENDPOINT = "https://accounts.spotify.com/authorize";
-const REDIRECT_URI = "http://localhost:3000/choice";
-const SPACE_DELIMITER = "%20";
-const SCOPES = [
-  "user-read-currently-playing",
-  "user-read-playback-state",
-  "playlist-read-private",
-  "user-read-private"
-];
-const SCOPES_URL_PARAM = SCOPES.join(SPACE_DELIMITER);
+function HomePage(){
 
-function HomePage() {
-    const handleLogin = () => {
-        window.location = `${SPOTIFY_AUTHORIZE_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&scope=${SCOPES_URL_PARAM}&response_type=code&show_dialog=true`;
-    };
+  localStorage.setItem("code",new URLSearchParams(window.location.search).get("code"))
+  const handlePage = (page) => {
+    window.location.href = `/${page}`;
+  }
 
-    return (
-        <div
-        className="home-container"
-        style={{
-          backgroundImage: `url(${musicalBackground})`,
-          backdropFilter: "blur(5px)", // Adjust the blur intensity as needed
-          WebkitBackdropFilter: "blur(5px)", // For Safari support
-        }}
-        >
-            <div className="content">
-                <h1 className="feelsound">VibeSound</h1>
-                <p>Discover music tailored just for you.</p>
-                <button className="get-started-button" onClick={handleLogin}>Get Started</button>
-            </div>
+  const SurpriseButton = () => {
+    let x = Math.floor((Math.random() * 100) + 1);
+    if (x%2 === 0)
+      window.location.href = '/FaceAnalyzer';
+    else
+      window.location.href = '/EmojiQuiz';
+  }
+
+  return (
+    <div className="choice-container" >
+      <h1>Personalized Music Recommendations Await !</h1>
+      <div className="options-container">
+        {/* Left half with camera window  */}
+        <div className="option">
+          <h2>Face the Music</h2>
+          <div className="camera-window">
+            <img src={cameraImage} alt="Camera Window" onClick={()=> handlePage("FaceAnalyzer")}/>
+          </div>
+          <p>Let's detect your mood with our face analyzer.</p>
+          <Link to="/FaceAnalyzer">
+            <button className="option-button1">Face Analyzer</button>
+          </Link>
         </div>
- );
+        <button className="surprise-button" onClick={() => SurpriseButton()}>Surprise Me</button>
+        <div className="option">
+          <h2>Form the Tune</h2>
+          <div className="form-image">
+            <img src={formImage} alt="Form" onClick={()=> handlePage("EmojiQuiz")}/>
+          </div>
+          <p>Let's find how you are feeling with our emoji quiz.</p>
+          <Link to="/EmojiQuiz">
+            <button className="option-button2">Quiz Zone</button>
+          </Link>
+        </div>
+      </div>
+    </div>
+  )
 }
 
 export default HomePage;
-
-
-
-
-

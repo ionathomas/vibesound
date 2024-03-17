@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import MainPage from './pages/MainPage';
 import HomePage from './pages/HomePage';
-import Choice from './pages/choice';
 import FaceAnalyzer from './pages/FaceAnalyzer'
 import EmojiQuiz from './pages/EmojiQuiz';
 import HappyPage from './pages/happy-page';
@@ -17,8 +17,8 @@ export default function App()
     return(
         <BrowserRouter>
             <Routes>
-                <Route exact path="/" element={<HomePage />} />
-                <Route path="/choice" element={<Choice />} />
+                <Route exact path="/" element={<MainPage />} />
+                <Route path="/homepage" element={<HomePage />} />
                 <Route path="/FaceAnalyzer" element={<FaceAnalyzer />} />
                 <Route path="/EmojiQuiz" element={<EmojiQuiz />} />
                 <Route path="/happy-page" element={<HappyPage />} />

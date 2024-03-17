@@ -41,7 +41,7 @@ def recommendPlaylists():
     getAccessToken(code)
     playlists = []
     sp = spotipy.Spotify(auth=session.get('token_info').get('access_token'))
-    resultStr = json.dumps(sp.search(userKeyword, limit=15, offset=0, type='playlist'))
+    resultStr = json.dumps(sp.search(userKeyword, limit=15, offset=0, type='playlist', market='CA'))
     result = json.loads(resultStr)
     for i in result['playlists']['items']:
         playlistDictionary = {'playlistID': i['id'], 'playlistName': i['name'],

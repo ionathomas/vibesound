@@ -1,8 +1,8 @@
 key_dictionary = {
     "happy": "Happy Mix",
     "sad": "Sad Mix",
-    "surprise": "Charts",
-    "neutral": "Niche",
+    "surprise": "New",
+    "neutral": "Mix",
     "angry": "Angry Mix",
     "disgust": "Cool Mix",
     "fear": "Anti-anxiety",
@@ -19,8 +19,8 @@ key_dictionary = {
     "beach vibes": "Beach",
     "happy vibes": "Happy Mix",
     "feeling nostalgic": "Nostalgia",
-    "anything": "Charts",
-    "niche": "Niche",
+    "anything": "New",
+    "niche": "Mix",
     "finding comfort": "Comfort",
     "heartbroken": "Heartbroken",
     "just sad": "Sad Mix"

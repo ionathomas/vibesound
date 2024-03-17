@@ -14,9 +14,12 @@ function FaceAnalyzer() {
           await axios.post('/upload', {image: imageSrc})
               .then((response) => {
                   console.log(response);
-                  if (response['data']['emotion'] === 404)
-                      //unhide the hidden tag
+                  if (response['data']['emotion'] === 404){
+                      const element = document.getElementById("ErrorMsg");
+                      if (element)
+                        element.style.visibility = "visible";
                       console.log("Error in processing the image. Try again");
+                  }
                   else{
                       window.location.href = `/recommendations?keyword=${response['data']['emotion']}`;
                   }
@@ -30,6 +33,10 @@ function FaceAnalyzer() {
   return (
     <div className="face-analyzer-container">
       <h1>Face Analyzer</h1>
+      <h3 id="ErrorMsg" style={{color:"darkred",
+          textAlign:"center",
+          visibility:"hidden"
+      }}>There seemed to be an issue when analyzing your image. Please Try Again!!! </h3>
       <div className="webcam-container">
         <Webcam
           audio={false}
@@ -39,7 +46,7 @@ function FaceAnalyzer() {
           className="webcam"
         />
       </div>
-      <button onClick={capture} className="capture-button">Capture my Mood</button>
+      <button onClick={capture} className="capture-button">Identify My Mood</button>
     </div>
   );
 }
