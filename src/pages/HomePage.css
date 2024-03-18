@@ -7,7 +7,7 @@
   justify-content: center;
   background-size: cover; 
   background-position: center; 
-  height: 93vh;
+  height: 100%;
   padding: 50px;
   }
   
@@ -132,6 +132,4 @@
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.8); /* Increase shadow on hover */
 }
 .option a{text-decoration: none;}
-
-
   
