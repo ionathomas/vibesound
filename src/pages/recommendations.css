@@ -1,5 +1,8 @@
-.recommendations {
+body {
     background-color: #7E599E;
+}
+
+.recommendations {
     display: flex;
     flex-direction: column;
     /* justify-content: center; */

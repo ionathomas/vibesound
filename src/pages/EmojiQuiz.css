@@ -1,12 +1,13 @@
+body {
+    background-color: #7E599E;
+}
 
 .questionnaire-container {
-    background-color: #7E599E;
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
     align-items: center;
-    height: 88.9vh;
-   
+    height: 100%;
   }
 
   @media (min-width: 768px) {

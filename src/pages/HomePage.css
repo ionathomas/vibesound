@@ -1,5 +1,8 @@
+body {
+    background-color: #7E599E;
+}
+
 .choice-container {
-  background-color: #7E599E;
   /* #023047; */
   display: flex;
   flex-direction: column;
