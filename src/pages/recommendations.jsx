@@ -65,7 +65,7 @@ function Recommendation() {
             <br/><br/>
             <div className="emoji-grid">
                 <div className="card">
-                    <img id="img1" src={img1} alt="Form" />
+                    <img id="img1" src={img1} alt="Form" onClick={() => handlePlayRedirect(pos)} />
                     <div className="card-container">
                         <div className="play-icon" onClick={() => handlePlayRedirect(pos)}>
                             <a id="link1"><i className="fa-solid fa-circle-play"></i></a>
@@ -78,7 +78,7 @@ function Recommendation() {
                     </div>
                 </div>
                 <div className="card">
-                    <img id="img2" src={img2} alt="Form" />
+                    <img id="img2" src={img2} alt="Form" onClick={() => handlePlayRedirect(pos+1)}/>
                     <div className="card-container">
                         <div className="play-icon" onClick={() => handlePlayRedirect(pos+1)}>
                             <i className="fa-solid fa-circle-play"></i>
@@ -92,7 +92,7 @@ function Recommendation() {
                     </div>
                 </div>
                 <div className="card">
-                    <img id="img3" src={img3} alt="Form" />
+                    <img id="img3" src={img3} alt="Form" onClick={() => handlePlayRedirect(pos+2)}/>
                     <div className="card-container">
                         <div className="play-icon" onClick={() => handlePlayRedirect(pos+2)}>
                             <i className="fa-solid fa-circle-play"></i>
@@ -109,7 +109,7 @@ function Recommendation() {
 
             <div className="refresh-icon" onClick={() => {updatePos(pos+3)}}>
                 <i className="fa fa-refresh" aria-hidden="true"></i>
-                <h4 id="TextMessage" style={{color: "white"}}>Still Not Satisfied</h4>
+                <h4 id="TextMessage" style={{color: "white"}}>Still Not Satisfied?</h4>
             </div>
         </div>
     );
