@@ -1,4 +1,4 @@
-import './MainPage.css';
+import '../pages_css/MainPage.css';
 import musicalBackground from '../assets/bgmusic.jpeg'
 import ClientId from "../config.json";
 import React from "react";

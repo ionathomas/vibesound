@@ -1,6 +1,6 @@
 import React, {useEffect, useRef} from "react";
 import Webcam from "react-webcam"; // Import Webcam component
-import './FaceAnalyzer.css';
+import '../pages_css/FaceAnalyzer.css';
 import axios from "axios";
 
 

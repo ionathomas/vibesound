@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import comfort from "../assets/Finding Comfort.png";
 import heartbroken from "../assets/Heartbroken.png";
 import sad from "../assets/Just Sad.png";
-import './emoji.css';
+import '../pages_css/emoji.css';
 
 function Emoji() {
 

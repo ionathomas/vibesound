@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import nostalgic from "../assets/Feeling Nostalgic.png";
 import anything from "../assets/Anything.png";
 import niche from "../assets/Niche Mix.png";
-import './emoji.css';
+import '../pages_css/emoji.css';
 
 function Emoji() {
 

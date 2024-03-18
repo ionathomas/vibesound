@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import axios from "axios";
-import "./loadingResults.css";
+import "../pages_css/loadingResults.css";
 
 function LoadingResults(){
 

@@ -1,7 +1,7 @@
 // Questionnaire.js
 import React, {useEffect} from "react";
 import { Link } from "react-router-dom";
-import "./EmojiQuiz.css";
+import "../pages_css/EmojiQuiz.css";
 
 function EmojiQuiz() {
 

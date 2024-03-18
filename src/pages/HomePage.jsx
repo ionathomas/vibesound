@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import { Link } from "react-router-dom";
 import cameraImage from "../assets/left.png"; // Import image for camera window
 import formImage from "../assets/right.jpg"; // Import image for form
-import './HomePage.css';
+import '../pages_css/HomePage.css';
 
 function HomePage(){
 

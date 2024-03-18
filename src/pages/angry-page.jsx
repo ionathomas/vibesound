@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import frustrated from "../assets/Feeling frustrated.png";
 import peace from "../assets/Finding Peace.png";
 import justAngry from "../assets/Just Angry.png";
-import './emoji.css';
+import '../pages_css/emoji.css';
 
 function Emoji() {
   const handleKeyword = (keyword) => {

@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import partyVibe from "../assets/Party Vibes.png";
 import beachVibe from "../assets/Beach Vibes.png";
 import happyVibe from "../assets/Happy Vibes.png";
-import './emoji.css';
+import '../pages_css/emoji.css';
 
 function Emoji() {
 

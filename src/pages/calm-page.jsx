@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import chill from "../assets/Chill Vibes.jpeg";
 import instrumental from "../assets/Instrumental.png";
 import meditation from "../assets/Meditation.jpg";
-import './emoji.css';
+import '../pages_css/emoji.css';
 
 function Emoji() {
 

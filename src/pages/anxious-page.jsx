@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import anxiety from "../assets/Anti-Anxiety.png";
 import focus from "../assets/Focus.png";
 import relax from "../assets/Relax.jpeg";
-import './emoji.css';
+import '../pages_css/emoji.css';
 
 function Emoji() {
 

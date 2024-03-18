@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import './recommendations.css';
+import '../pages_css/recommendations.css';
 
 function Recommendation() {
 
