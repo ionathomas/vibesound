@@ -7,8 +7,10 @@
   justify-content: center;
   background-size: cover; 
   background-position: center; 
-  height: 100%;
-  padding: 50px;
+  height: 93.75vh;
+  padding-right: 50px;
+  padding-left: 50px;
+  padding-bottom: 50px;
   }
   
   h1 {
