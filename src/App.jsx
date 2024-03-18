@@ -11,6 +11,7 @@ import CalmPage from './pages/calm-page';
 import AnxiousPage from './pages/anxious-page';
 import NotSurePage from './pages/notSure-page';
 import Recommendations from './pages/recommendations';
+import LoadingResults from "./pages/loadingResults";
 
 export default function App()
 {
@@ -28,6 +29,7 @@ export default function App()
                 <Route path="/anxious-page" element={<AnxiousPage />} />
                 <Route path="/notSure-page" element={<NotSurePage />} />
                 <Route path="/recommendations" element={<Recommendations />}/>
+                <Route path="/loadingResults" element={<LoadingResults />}/>
             </Routes>
         </BrowserRouter>
 

@@ -1,6 +1,7 @@
 
 .emoji-contain {
   background-color: #7E599E;
+  overflow:auto;
   display: flex;
   flex-direction: column;
   justify-content: center;

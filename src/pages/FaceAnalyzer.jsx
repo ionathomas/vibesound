@@ -8,6 +8,10 @@ function FaceAnalyzer() {
   // Function to handle face capture
   const webcamRef = useRef(null);
 
+  const handleRedirect = (page) => {
+    window.location.href = `/${page}`;
+  };
+
   async function capture () {
       const imageSrc = webcamRef.current.getScreenshot();
 
@@ -28,7 +32,7 @@ function FaceAnalyzer() {
                       console.log("Error in processing the image. Try again");
                   }
                   else{
-                      window.location.href = `/recommendations?keyword=${response['data']['emotion']}`;
+                      window.location.href = `/loadingResults?keyword=${response['data']['emotion']}`;
                   }
               });
           console.log('Image sent to server.');
@@ -39,6 +43,9 @@ function FaceAnalyzer() {
 
   return (
     <div className="face-analyzer-container">
+      <div className ="home-icon" onClick={()=>handleRedirect("HomePage")}>
+        <i className="fa-solid fa-house"></i>
+      </div>
       <h1>Face Analyzer</h1>
       <div id="loader" style={{display:"none"}}></div>
       <h3 id="ErrorMsg" style={{color:"darkred",

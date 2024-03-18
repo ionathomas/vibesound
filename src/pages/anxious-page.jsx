@@ -8,11 +8,18 @@ function Emoji() {
 
   const handleKeyword = (keyword) => {
     console.log(keyword);
-    window.location.href = `/recommendations?keyword=${keyword}`;
+    window.location.href = `/loadingResults?keyword=${keyword}`;
   }
+
+  const handleRedirect = (page) => {
+    window.location.href = `/${page}`;
+  };
 
   return (
     <div className="emoji-contain">
+      <div className ="home-icon" onClick={()=>handleRedirect("HomePage")}>
+        <i className="fa-solid fa-house"></i>
+      </div>
       <h1>So you're feeling anxious. <br/>Tell me more... </h1>
       <div className="emoji-grid">
         <div className="card" onClick={() => handleKeyword("anti anxiety")}>

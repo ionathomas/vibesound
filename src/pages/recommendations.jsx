@@ -1,97 +1,115 @@
-
-import React, {useEffect} from 'react';
-import playlist from "../assets/playlist.jpg";
+import React, {useEffect, useRef, useState} from 'react';
+import playlist from "../assets/Anything.png";
 import './recommendations.css';
+import axios from "axios";
+import {Link} from "react-router-dom";
 
 function Recommendation() {
-    const refresh = () => {
 
-        //  code for refresh button
-        window.location.href = "/choice";
-
+    const handleRedirect = (page) => {
+        window.location.href = `/${page}`;
     };
 
-    const play = () => {
-
-        //  code for refresh button
-        window.location.href = "/choice";
-
+    const handlePlayRedirect = (linkPosition) => {
+        window.open(results[linkPosition]["playlistURL"],"_blank");
     };
 
-    const home = () => {
+    const [pos, updatePos] = useState(0);
+    const results = JSON.parse(localStorage.getItem("Results"));
 
-        //  code for refresh button
-        window.location.href = "/choice";
+    //Image
+    const [img1, setImg1] = useState("");
+    const [img2, setImg2] = useState("");
+    const [img3, setImg3] = useState("");
 
-    };
+    //Playlist name
+    const [play1, setPlay1] = useState("");
+    const [play2, setPlay2] = useState("");
+    const [play3, setPlay3] = useState("");
 
-    const Keyword = new URLSearchParams(window.location.search).get("keyword");
-    const code = localStorage.getItem("code");
-    const [token, setToken] = useState({});
+    //Playlist by
+    const [by1, setBy1] = useState("");
+    const [by2, setBy2] = useState("");
+    const [by3, setBy3] = useState("");
 
     useEffect(() => {
-        axios.get("/recommendPlaylists?code="+code+"&keyword="+Keyword)
-        .then(function (response) {
-            console.log(response.data);
-        })
-        .catch(function (err) {
-            console.log(err);
-        });
-    });
+        const results = JSON.parse(localStorage.getItem("Results"));
+        console.log(pos);
+
+        if (pos === 15)
+            updatePos(0);
+
+        if (results != null && pos < 15){
+            setImg1(results[pos]["playlistImg"]);
+            setImg2(results[pos+1]["playlistImg"]);
+            setImg3(results[pos+2]["playlistImg"]);
+            console.log(pos);
+
+            setPlay1(results[pos]["playlistName"]);
+            setPlay2(results[pos+1]["playlistName"]);
+            setPlay3(results[pos+2]["playlistName"]);
+
+            setBy1(results[pos]["playlistBy"]);
+            setBy2(results[pos+1]["playlistBy"]);
+            setBy3(results[pos+2]["playlistBy"]);
+        }
+
+    },[pos]);
 
     return (
         <div className="recommendations">
-            <div className ="home-icon" onClick={home}>
-                <i class="fa-solid fa-house"></i>
+            <div className ="home-icon" onClick={()=>handleRedirect("HomePage")}>
+                <i className="fa-solid fa-house"></i>
             </div>
-            <h1>So here are your recommendations...</h1>
+            <h1>Recommendations Based On Your Mood...</h1>
+            <br/><br/>
             <div className="emoji-grid">
                 <div className="card">
-                    <img src={playlist} alt="Form" />
+                    <img id="img1" src={img1} alt="Form" />
                     <div className="card-container">
-                        <div class="play-icon" onClick={play}>
-                            <i class="fa-solid fa-circle-play"></i>
+                        <div className="play-icon" onClick={() => handlePlayRedirect(pos)}>
+                            <a id="link1"><i className="fa-solid fa-circle-play"></i></a>
                         </div>
-                        <div><h4><b>Playlist1 Name</b></h4>
+                        <div><h4 id="play1"><b>{play1}</b></h4>
                             <div>
-                                <h5><b>Playlist1 Author</b></h5>
+                                <h5 id="by1"><b>{by1}</b></h5>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="card">
-                    <img src={playlist} alt="Form" />
+                    <img id="img2" src={img2} alt="Form" />
                     <div className="card-container">
-                        <div class="play-icon" onClick={play}>
-                            <i class="fa-solid fa-circle-play"></i>
+                        <div className="play-icon" onClick={() => handlePlayRedirect(pos+1)}>
+                            <i className="fa-solid fa-circle-play"></i>
                         </div>
                         <div>
-                            <h4><b>Playlist2 Name</b></h4>
+                            <h4 id="play2"><b>{play2}</b></h4>
                             <div>
-                                <h5><b>Playlist2 Author</b></h5>
+                                <h5 id="by2"><b>{by2}</b></h5>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="card">
-                    <img src={playlist} alt="Form" />
+                    <img id="img3" src={img3} alt="Form" />
                     <div className="card-container">
-                        <div class="play-icon" onClick={play}>
-                            <i class="fa-solid fa-circle-play"></i>
+                        <div className="play-icon" onClick={() => handlePlayRedirect(pos+2)}>
+                            <i className="fa-solid fa-circle-play"></i>
                         </div>
                         <div>
-                            <h4><b>Playlist3 Name</b></h4>
+                            <h4 id="play3"><b>{play3}</b></h4>
                             <div>
-                                <h5><b>Playlist3 Author</b></h5>
+                                <h5 id="by3"><b>{by3}</b></h5>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="refresh-icon" onClick={refresh}>
-                <i class="fa fa-refresh" aria-hidden="true"></i>
-                <h4>Still Not Satisfied</h4>
+            <div className="refresh-icon" onClick={() => {updatePos(pos+3)}}>
+                <i className="fa fa-refresh" aria-hidden="true"></i>
+                <h4 id="TextMessage" style={{color: "white"}}>Still Not Satisfied</h4>
             </div>
         </div>
     );

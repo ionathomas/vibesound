@@ -1,12 +1,19 @@
 // Questionnaire.js
-
 import React from "react";
 import { Link } from "react-router-dom";
 import "./EmojiQuiz.css";
 
 function EmojiQuiz() {
+
+  const handleRedirect = (page) => {
+    window.location.href = `/${page}`;
+  };
+
   return (
     <div className="questionnaire-container">
+      <div className ="home-icon" onClick={()=>handleRedirect("HomePage")}>
+        <i className="fa-solid fa-house"></i>
+      </div>
       <h1 className="question">How is your mood ?</h1>
       <div className="grid-container">
         <div className="grid-item">
