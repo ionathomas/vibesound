@@ -6,7 +6,6 @@ import './HomePage.css';
 
 function HomePage(){
 
-  localStorage.setItem("code",new URLSearchParams(window.location.search).get("code"))
   const handlePage = (page) => {
     window.location.href = `/${page}`;
   }
@@ -20,10 +19,14 @@ function HomePage(){
   }
 
   useEffect(() => {
+    if(localStorage.getItem("code") === "null" || localStorage.getItem("code") === null)
+      localStorage.setItem("code",new URLSearchParams(window.location.search).get("code"))
     if (new URLSearchParams(window.location.search).get("error") === "access_denied")
       window.location = '/';
-    else if(!(new URLSearchParams(window.location.search).get("code")))
-      window.location = '/';
+    else if(!(new URLSearchParams(window.location.search).get("code"))){
+      if (localStorage.getItem("code") === "null")
+        window.location = '/';
+    }
   }, []);
 
   return (
