@@ -1,5 +1,5 @@
 // Questionnaire.js
-import React from "react";
+import React, {useEffect} from "react";
 import { Link } from "react-router-dom";
 import "./EmojiQuiz.css";
 
@@ -8,6 +8,11 @@ function EmojiQuiz() {
   const handleRedirect = (page) => {
     window.location.href = `/${page}`;
   };
+
+  useEffect(() => {
+    if (localStorage.getItem("code") === "null" || localStorage.getItem("code") === null)
+        window.location = '/';
+  }, []);
 
   return (
     <div className="questionnaire-container">

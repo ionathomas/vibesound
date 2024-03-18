@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import nostalgic from "../assets/Feeling Nostalgic.png";
 import anything from "../assets/Anything.png";
 import niche from "../assets/Niche Mix.png";
@@ -10,6 +10,11 @@ function Emoji() {
     console.log(keyword);
     window.location.href = `/loadingResults?keyword=${keyword}`;
   }
+
+  useEffect(() => {
+    if (localStorage.getItem("code") === "null" || localStorage.getItem("code") === null)
+        window.location = '/';
+  }, []);
 
   const handleRedirect = (page) => {
     window.location.href = `/${page}`;

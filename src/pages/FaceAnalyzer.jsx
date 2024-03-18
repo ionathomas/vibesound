@@ -1,4 +1,4 @@
-import React, {useRef} from "react";
+import React, {useEffect, useRef} from "react";
 import Webcam from "react-webcam"; // Import Webcam component
 import './FaceAnalyzer.css';
 import axios from "axios";
@@ -11,6 +11,11 @@ function FaceAnalyzer() {
   const handleRedirect = (page) => {
     window.location.href = `/${page}`;
   };
+
+  useEffect(() => {
+    if (localStorage.getItem("code") === "null" || localStorage.getItem("code") === null)
+        window.location = '/';
+  }, []);
 
   async function capture () {
       const imageSrc = webcamRef.current.getScreenshot();

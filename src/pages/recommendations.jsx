@@ -33,6 +33,9 @@ function Recommendation() {
         const results = JSON.parse(localStorage.getItem("Results"));
         console.log(pos);
 
+        if (localStorage.getItem("code") === "null" || localStorage.getItem("code") === null)
+            window.location = '/';
+
         if (pos === 15)
             updatePos(0);
 

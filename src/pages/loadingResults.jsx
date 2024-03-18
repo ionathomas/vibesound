@@ -8,6 +8,9 @@ function LoadingResults(){
     const code = localStorage.getItem("code");
 
     useEffect(() => {
+        if (localStorage.getItem("code") === "null" || localStorage.getItem("code") === null)
+            window.location = '/';
+
         axios.get("/recommendPlaylists?code="+code+"&keyword="+Keyword)
         .then(function (response) {
             console.log(response.data);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import comfort from "../assets/Finding Comfort.png";
 import heartbroken from "../assets/Heartbroken.png";
 import sad from "../assets/Just Sad.png";
@@ -14,6 +14,11 @@ function Emoji() {
   const handleRedirect = (page) => {
     window.location.href = `/${page}`;
   };
+
+  useEffect(() => {
+    if (localStorage.getItem("code") === "null" || localStorage.getItem("code") === null)
+        window.location = '/';
+  }, []);
 
   return (
     <div className="emoji-contain">

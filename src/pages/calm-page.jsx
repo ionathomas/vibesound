@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import chill from "../assets/Chill Vibes.jpeg";
 import instrumental from "../assets/Instrumental.png";
 import meditation from "../assets/Meditation.jpg";
@@ -14,6 +14,11 @@ function Emoji() {
     console.log(keyword);
     window.location.href = `/loadingResults?keyword=${keyword}`;
   }
+
+  useEffect(() => {
+    if (localStorage.getItem("code") === "null" || localStorage.getItem("code") === null)
+        window.location = '/';
+  }, []);
 
   return (
     <div className="emoji-contain">

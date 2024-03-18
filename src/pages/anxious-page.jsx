@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import anxiety from "../assets/Anti-Anxiety.png";
 import focus from "../assets/Focus.png";
 import relax from "../assets/Relax.jpeg";
@@ -14,6 +14,11 @@ function Emoji() {
   const handleRedirect = (page) => {
     window.location.href = `/${page}`;
   };
+
+  useEffect(() => {
+    if (localStorage.getItem("code") === "null" || localStorage.getItem("code") === null)
+        window.location = '/';
+  }, []);
 
   return (
     <div className="emoji-contain">

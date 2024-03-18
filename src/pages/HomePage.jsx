@@ -24,7 +24,7 @@ function HomePage(){
     if (new URLSearchParams(window.location.search).get("error") === "access_denied")
       window.location = '/';
     else if(!(new URLSearchParams(window.location.search).get("code"))){
-      if (localStorage.getItem("code") === "null")
+      if (localStorage.getItem("code") === "null" || localStorage.getItem("code") === null)
         window.location = '/';
     }
   }, []);
