@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Link } from "react-router-dom";
 import cameraImage from "../assets/left.png"; // Import image for camera window
 import formImage from "../assets/right.jpg"; // Import image for form
@@ -18,6 +18,13 @@ function HomePage(){
     else
       window.location.href = '/EmojiQuiz';
   }
+
+  useEffect(() => {
+    if (new URLSearchParams(window.location.search).get("error") === "access_denied")
+      window.location = '/';
+    else if(!(new URLSearchParams(window.location.search).get("code")))
+      window.location = '/';
+  }, []);
 
   return (
     <div className="choice-container" >
