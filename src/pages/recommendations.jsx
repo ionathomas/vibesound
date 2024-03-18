@@ -1,8 +1,5 @@
-import React, {useEffect, useRef, useState} from 'react';
-import playlist from "../assets/Anything.png";
+import React, {useEffect, useState} from 'react';
 import './recommendations.css';
-import axios from "axios";
-import {Link} from "react-router-dom";
 
 function Recommendation() {
 
@@ -68,7 +65,7 @@ function Recommendation() {
                     <img id="img1" src={img1} alt="Form" onClick={() => handlePlayRedirect(pos)} />
                     <div className="card-container">
                         <div className="play-icon" onClick={() => handlePlayRedirect(pos)}>
-                            <a id="link1"><i className="fa-solid fa-circle-play"></i></a>
+                            <i className="fa-solid fa-circle-play"></i>
                         </div>
                         <div><h4 id="play1"><b>{play1}</b></h4>
                             <div>
