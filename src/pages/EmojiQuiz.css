@@ -102,3 +102,8 @@
 .emoji-container a{
     text-decoration: none;
 }
+
+.fa-house {
+    font-size: 30px;
+    color: white;
+}

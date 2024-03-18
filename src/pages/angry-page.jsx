@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import frustrated from "../assets/Feeling frustrated.png";
 import peace from "../assets/Finding Peace.png";
 import justAngry from "../assets/Just Angry.png";
