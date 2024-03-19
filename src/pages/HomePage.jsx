@@ -19,18 +19,32 @@ function HomePage(){
   }
 
   useEffect(() => {
-    if(localStorage.getItem("code") === "null" || localStorage.getItem("code") === null)
-      localStorage.setItem("code",new URLSearchParams(window.location.search).get("code"))
-    if (new URLSearchParams(window.location.search).get("error") === "access_denied")
+    if(localStorage.getItem("signedIn") === "0"){
+      window.location = '/';
+    }
+    if(localStorage.getItem("code") === "null" || localStorage.getItem("code") === null) {
+      localStorage.setItem("code", new URLSearchParams(window.location.search).get("code"));
+      localStorage.setItem("signedIn","1");
+    }
+    else if (new URLSearchParams(window.location.search).get("error") === "access_denied")
       window.location = '/';
     else if(!(new URLSearchParams(window.location.search).get("code"))){
       if (localStorage.getItem("code") === "null" || localStorage.getItem("code") === null)
-        window.location = '/';
+        signout();
     }
   }, []);
 
+  const signout = () => {
+    window.location = '/';
+    localStorage.clear();
+    localStorage.setItem("signedIn","0");
+  }
+
   return (
     <div className="choice-container" >
+      <div className ="signout-icon" onClick={signout}>
+        <i className="fa-solid fa-arrow-right-from-bracket"></i>
+      </div>
       <h1>Personalized Music Recommendations Await !</h1>
       <div className="options-container">
         {/* Left half with camera window  */}
