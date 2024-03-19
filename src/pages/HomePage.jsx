@@ -18,13 +18,17 @@ function HomePage(){
       window.location.href = '/EmojiQuiz';
   }
 
+  const signout = () => {
+    window.location = '/';
+    localStorage.clear();
+  };
+
   useEffect(() => {
-    if(localStorage.getItem("signedIn") === "0"){
-      window.location = '/';
-    }
     if(localStorage.getItem("code") === "null" || localStorage.getItem("code") === null) {
-      localStorage.setItem("code", new URLSearchParams(window.location.search).get("code"));
-      localStorage.setItem("signedIn","1");
+      if(new URLSearchParams(window.location.search).get("code"))
+        localStorage.setItem("code", new URLSearchParams(window.location.search).get("code"));
+      else
+        window.location = '/';
     }
     else if (new URLSearchParams(window.location.search).get("error") === "access_denied")
       window.location = '/';
@@ -33,12 +37,6 @@ function HomePage(){
         signout();
     }
   }, []);
-
-  const signout = () => {
-    window.location = '/';
-    localStorage.clear();
-    localStorage.setItem("signedIn","0");
-  }
 
   return (
     <div className="choice-container" >
