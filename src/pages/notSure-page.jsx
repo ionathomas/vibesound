@@ -25,7 +25,7 @@ function Emoji() {
       <div className ="home-icon" onClick={()=>handleRedirect("HomePage")}>
         <i className="fa-solid fa-house"></i>
       </div>
-      <h1>So you're feeling anxious. <br/>Tell me more... </h1>
+      <h1>So you're not sure how you feel?! <br/>Tell me more... </h1>
       <div className="emoji-grid">
         <div className="card" onClick={() => handleKeyword("feeling nostalgic")}>
           <img src={nostalgic} alt="Form" />
