@@ -33,6 +33,11 @@ function Recommendation() {
         const results = JSON.parse(localStorage.getItem("Results"));
         console.log(pos);
 
+        const body = document.body;
+        body.style.backgroundColor = results[pos]['color2'];
+        body.style.backgroundImage = "radial-gradient("+results[pos]['color1']+", "+results[pos]['color2']+")"
+        console.log(results)
+
         if (localStorage.getItem("code") === "null" || localStorage.getItem("code") === null)
             window.location = '/';
 

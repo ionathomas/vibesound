@@ -11,7 +11,7 @@ import json
 import time
 import secrets
 import config
-from keywordDictionary import key_dictionary
+from keywordDictionary import key_dictionary, color_dictionary
 
 # App config
 app = Flask(__name__)
@@ -47,7 +47,9 @@ def recommendPlaylists():
         playlistDictionary = {'playlistID': i['id'], 'playlistName': i['name'],
                               'playlistBy': i['owner']['display_name'],
                               'playlistImg': i['images'][0]['url'], 'playlistDesc': i['description'],
-                              'playlistURL': i['external_urls']['spotify']}
+                              'playlistURL': i['external_urls']['spotify'],
+                              'color1': color_dictionary[request.values["keyword"]][0],
+                              'color2': color_dictionary[request.values["keyword"]][1]}
         playlists.append(playlistDictionary)
     return playlists
 

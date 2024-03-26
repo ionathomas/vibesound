@@ -1,32 +1,4 @@
-key_dictionary = {
-    "happy": "Happy Mix",
-    "sad": "Sad Mix",
-    "surprise": "New",
-    "neutral": "Mix",
-    "angry": "Angry Mix",
-    "disgust": "Cool Mix",
-    "fear": "Anti-anxiety",
-    "feeling frustrated": "Frustrate",
-    "finding peace": "Release Anger",
-    "just angry": "Angry Mix",
-    "anti anxiety": "Anti-anxiety",
-    "focus": "Focus",
-    "relax": "Relax",
-    "chill": "Chill Mix",
-    "instrumental": "Instrumental",
-    "meditation": "Meditation",
-    "party vibes": "Party",
-    "beach vibes": "Beach",
-    "happy vibes": "Happy Mix",
-    "feeling nostalgic": "Nostalgia",
-    "anything": "New",
-    "niche": "Mix",
-    "finding comfort": "Comfort",
-    "heartbroken": "Heartbroken",
-    "just sad": "Sad Mix"
-}
-
-color_dictionary = {
+{
     "happy": ["#fe9", "#e4bf00"],
     "sad": ["#99a8de", "#1d2c5c"],
     "surprise": ["#fe9", "#cc4000"],

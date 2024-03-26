@@ -1,6 +1,7 @@
 import React, {useEffect} from "react";
 import axios from "axios";
 import "../pages_css/loadingResults.css";
+import colorDict from "../colorDictionary.json";
 
 function LoadingResults(){
 
@@ -8,6 +9,9 @@ function LoadingResults(){
     const code = localStorage.getItem("code");
 
     useEffect(() => {
+        const body = document.body;
+        body.style.backgroundColor = colorDict[Keyword][1];
+        body.style.backgroundImage = "radial-gradient("+colorDict[Keyword][0]+", "+colorDict[Keyword][1]+")";
         if (localStorage.getItem("code") === "null" || localStorage.getItem("code") === null)
             window.location = '/';
 

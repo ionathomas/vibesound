@@ -15,6 +15,9 @@ function Emoji() {
   };
 
   useEffect(() => {
+    const body = document.body;
+    body.style.backgroundColor = "#7a0600";
+    body.style.backgroundImage = "radial-gradient(#ff6057, #7a0600)";
     if (localStorage.getItem("code") === "null" || localStorage.getItem("code") === null)
         window.location = '/';
   }, []);

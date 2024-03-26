@@ -12,6 +12,9 @@ function Emoji() {
   }
 
   useEffect(() => {
+    const body = document.body;
+    body.style.backgroundColor = "#cc4000";
+    body.style.backgroundImage = "radial-gradient(#fe9, #cc4000)";
     if (localStorage.getItem("code") === "null" || localStorage.getItem("code") === null)
         window.location = '/';
   }, []);
