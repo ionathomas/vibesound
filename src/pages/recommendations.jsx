@@ -34,8 +34,8 @@ function Recommendation() {
         console.log(pos);
 
         const body = document.body;
-        body.style.backgroundColor = results[pos]['color2'];
-        body.style.backgroundImage = "radial-gradient("+results[pos]['color1']+", "+results[pos]['color2']+")"
+        body.style.backgroundColor = results[0]['color2'];
+        body.style.backgroundImage = "radial-gradient("+results[0]['color1']+", "+results[0]['color2']+")"
         console.log(results)
 
         if (localStorage.getItem("code") === "null" || localStorage.getItem("code") === null)
