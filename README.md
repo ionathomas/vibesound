@@ -18,25 +18,26 @@ python -m flask --app app run
 
 Install the front-end dependencies with npm or yarn.
 
-If using npm, run the following command to install the dependencies.
+#### For npm:
+To install the dependencies -
 
 ```bash
 npm install
-``` 
-
-If using yarn, run the following command to install the dependencies.
-
-```bash
-yarn install
 ```
-
-If using npm, run the following command to start the frontend.
+To start the frontend -
 
 ```bash
 npm start
 ```
 
-If using yarn, run the following command to start the frontend.
+#### For yarn:
+To install the dependencies -
+
+```bash
+yarn install
+```
+
+To start the frontend -
 
 ```bash
 yarn start
