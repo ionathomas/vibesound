@@ -4,6 +4,8 @@ People often listen to music to express their feelings and regulate their emotio
 
 ## Getting Started
 
+Follow the documentation from [here](https://developer.spotify.com/documentation/web-api) to use the Spotify Web API. After 'Creating an app', paste the client ID and client secret in the config files found in `Backend` folder and `src` folder.
+
 Install the backend dependencies with pip.
 
 ```bash
