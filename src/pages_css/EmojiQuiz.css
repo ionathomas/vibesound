@@ -1,12 +1,13 @@
+body {
+    background-color: #7E599E;
+}
 
 .questionnaire-container {
-    background-color: #7E599E;
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
     align-items: center;
-    height: 100vh;
-   
+    height: 100%;
   }
 
   @media (min-width: 768px) {
@@ -90,13 +91,24 @@
     align-items: center;
     border: 2px solid #353533; /* Add border around emoji container */
     border-radius: 30px; /* Add border radius for rounded corners */
+    background-color: #353533;
     border-width: 5px;
     width:10rem;
     margin-top: 40px;
     margin-bottom: 60px;
     padding: 20px; /* Add padding for spacing */
+    cursor:pointer;
+}
+
+.emoji-container:hover {
+    transform: scale(1.05); /* Increase size on hover */
 }
 
 .emoji-container a{
     text-decoration: none;
+}
+
+.fa-house {
+    font-size: 30px;
+    color: white;
 }

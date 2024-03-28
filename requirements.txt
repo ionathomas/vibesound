@@ -1,0 +1,10 @@
+flask
+spotipy
+html5lib
+requests
+requests_html
+beautifulsoup4
+pathlib
+pandas
+deepface
+opencv-python

@@ -1,46 +1,75 @@
-// import React, { useState } from "react";
-import './HomePage.css';
+import React, {useEffect} from "react";
 import { Link } from "react-router-dom";
-//import Choice from "./choice";
-import musicalBackground from '../assets/bgmusic.jpeg'
+import cameraImage from "../assets/left.png"; // Import image for camera window
+import formImage from "../assets/right.jpg"; // Import image for form
+import '../pages_css/HomePage.css';
 
-function HomePage() {
-  // const [isOn, setIsOn] = useState(false);
-  // // Function to toggle the power button state and navigate to the desired page
-  // const togglePower = () => {
-  //   setIsOn(prevState => !prevState);
-  //   // Add a delay before navigating to simulate animation
-  //   setTimeout(() => {
-  //     // Navigate to the desired page using window.location.href
-  //     window.location.href = '/choice';
-  //   }, 500); // Adjust the delay (in milliseconds) as needed
-  // };
+function HomePage(){
+
+  const handlePage = (page) => {
+    window.location.href = `/${page}`;
+  }
+
+  const SurpriseButton = () => {
+    let x = Math.floor((Math.random() * 100) + 1);
+    if (x%2 === 0)
+      window.location.href = '/FaceAnalyzer';
+    else
+      window.location.href = '/EmojiQuiz';
+  }
+
+  const signout = () => {
+    window.location = '/';
+    localStorage.clear();
+  };
+
+  useEffect(() => {
+    if(localStorage.getItem("code") === "null" || localStorage.getItem("code") === null) {
+      if(new URLSearchParams(window.location.search).get("code"))
+        localStorage.setItem("code", new URLSearchParams(window.location.search).get("code"));
+      else
+        window.location = '/';
+    }
+    else if (new URLSearchParams(window.location.search).get("error") === "access_denied")
+      window.location = '/';
+    else if(!(new URLSearchParams(window.location.search).get("code"))){
+      if (localStorage.getItem("code") === "null" || localStorage.getItem("code") === null)
+        signout();
+    }
+  }, []);
+
   return (
-    <div
-    className="home-container"
-    style={{
-      backgroundImage: `url(${musicalBackground})`,
-      backdropFilter: "blur(5px)", // Adjust the blur intensity as needed
-      WebkitBackdropFilter: "blur(5px)", // For Safari support
-    }}
-  >
-      <div className="content">
-        <h1 className="feelsound">VibeSound</h1>
-        <p>Discover music tailored just for you.</p>
-        <Link to="/choice">
-          {
-          <button className="get-started-button">Get Started</button>
-          }
-        </Link>
-      </div> 
-      
-    </div> 
- );
+    <div className="choice-container" >
+      <div className ="signout-icon" onClick={signout}>
+        <i className="fa-solid fa-arrow-right-from-bracket"></i>
+      </div>
+      <h1>Personalized Music Recommendations Await !</h1>
+      <div className="options-container">
+        {/* Left half with camera window  */}
+        <div className="option">
+          <h2>Face the Music</h2>
+          <div className="camera-window">
+            <img src={cameraImage} alt="Camera Window" onClick={()=> handlePage("FaceAnalyzer")}/>
+          </div>
+          <p>Let's detect your mood with our face analyzer.</p>
+          <Link to="/FaceAnalyzer">
+            <button className="option-button1">Face Analyzer</button>
+          </Link>
+        </div>
+        <button className="surprise-button" onClick={() => SurpriseButton()}>Surprise Me</button>
+        <div className="option">
+          <h2>Form the Tune</h2>
+          <div className="form-image">
+            <img src={formImage} alt="Form" onClick={()=> handlePage("EmojiQuiz")}/>
+          </div>
+          <p>Let's find how you are feeling with our emoji quiz.</p>
+          <Link to="/EmojiQuiz">
+            <button className="option-button2">Quiz Zone</button>
+          </Link>
+        </div>
+      </div>
+    </div>
+  )
 }
 
 export default HomePage;
-
-
-
-
-

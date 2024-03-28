@@ -1,30 +1,47 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import frustrated from "../assets/Feeling frustrated.png";
 import peace from "../assets/Finding Peace.png";
 import justAngry from "../assets/Just Angry.png";
-import './emoji.css';
+import '../pages_css/emoji.css';
 
 function Emoji() {
+  const handleKeyword = (keyword) => {
+    console.log(keyword);
+    window.location.href = `/loadingResults?keyword=${keyword}`;
+  }
+
+  const handleRedirect = (page) => {
+    window.location.href = `/${page}`;
+  };
+
+  useEffect(() => {
+    const body = document.body;
+    body.style.backgroundColor = "#7a0600";
+    body.style.backgroundImage = "radial-gradient(#ff6057, #7a0600)";
+    if (localStorage.getItem("code") === "null" || localStorage.getItem("code") === null)
+        window.location = '/';
+  }, []);
+
   return (
     <div className="emoji-contain">
-      <h1>So you are feeling angry. Tell me more... </h1>
+      <div className ="home-icon" onClick={()=>handleRedirect("HomePage")}>
+        <i className="fa-solid fa-house"></i>
+      </div>
+      <h1>So you are feeling angry. <br/>Tell me more... </h1>
       <div className="emoji-grid">
-        <div className="card">
-          <img src={frustrated} alt="Form" />
+        <div className="card" onClick={() => handleKeyword("feeling frustrated")}>
+          <img src={frustrated} alt="Form"/>
           <div className="card-container">
-            <h4><b>Feeling frustrated</b></h4> 
           </div>
         </div>
-        <div className="card">
+        <div className="card" onClick={() => handleKeyword("finding peace")}>
           <img src={peace} alt="Form" />
           <div className="card-container">
-            <h4><b>Finding Peace</b></h4> 
           </div>
         </div>
-        <div className="card">
+        <div className="card" onClick={() => handleKeyword("just angry")}>
           <img src={justAngry} alt="Form" />
           <div className="card-container">
-            <h4><b>Just Angry</b></h4> 
           </div>
         </div>
       </div>

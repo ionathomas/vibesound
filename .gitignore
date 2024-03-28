@@ -182,3 +182,10 @@ cython_debug/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+#Config file
+/src/config.json
+/Backend/config.py
+/Backend/.cache
+
+/src/Capture/*

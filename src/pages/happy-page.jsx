@@ -1,30 +1,48 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import partyVibe from "../assets/Party Vibes.png";
 import beachVibe from "../assets/Beach Vibes.png";
 import happyVibe from "../assets/Happy Vibes.png";
-import './emoji.css';
+import '../pages_css/emoji.css';
 
 function Emoji() {
+
+  const handleKeyword = (keyword) => {
+    console.log(keyword);
+    window.location.href = `/loadingResults?keyword=${keyword}`;
+  }
+
+  const handleRedirect = (page) => {
+    window.location.href = `/${page}`;
+  };
+
+  useEffect(() => {
+    const body = document.body;
+    body.style.backgroundColor = "#e4bf00";
+    body.style.backgroundImage = "radial-gradient(#fe9, #e4bf00)";
+    if (localStorage.getItem("code") === "null" || localStorage.getItem("code") === null)
+        window.location = '/';
+  }, []);
+
   return (
     <div className="emoji-contain">
-      <h1>So you're feeling happy. Tell me more... </h1>
+      <div className ="home-icon" onClick={()=>handleRedirect("HomePage")}>
+        <i className="fa-solid fa-house"></i>
+      </div>
+      <h1>So you're feeling happy. <br/>Tell me more... </h1>
       <div className="emoji-grid">
-        <div className="card">
+        <div className="card" onClick={() => handleKeyword("party vibes")}>
           <img src={partyVibe} alt="Form" />
           <div className="card-container">
-            <h4><b>Party Vibes</b></h4> 
           </div>
         </div>
-        <div className="card">
+        <div className="card" onClick={() => handleKeyword("beach vibes")}>
           <img src={beachVibe} alt="Form" />
           <div className="card-container">
-            <h4><b>Beach Vibes</b></h4> 
           </div>
         </div>
-        <div className="card">
+        <div className="card" onClick={() => handleKeyword("happy vibes")}>
           <img src={happyVibe} alt="Form" />
           <div className="card-container">
-            <h4><b>Happy Vibes</b></h4> 
           </div>
         </div>
       </div>

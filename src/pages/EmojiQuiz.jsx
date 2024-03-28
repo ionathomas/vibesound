@@ -1,12 +1,24 @@
 // Questionnaire.js
-
-import React from "react";
+import React, {useEffect} from "react";
 import { Link } from "react-router-dom";
-import "./Questionnaire.css";
+import "../pages_css/EmojiQuiz.css";
 
-function Questionnaire() {
+function EmojiQuiz() {
+
+  const handleRedirect = (page) => {
+    window.location.href = `/${page}`;
+  };
+
+  useEffect(() => {
+    if (localStorage.getItem("code") === "null" || localStorage.getItem("code") === null)
+        window.location = '/';
+  }, []);
+
   return (
     <div className="questionnaire-container">
+      <div className ="home-icon" onClick={()=>handleRedirect("HomePage")}>
+        <i className="fa-solid fa-house"></i>
+      </div>
       <h1 className="question">How is your mood ?</h1>
       <div className="grid-container">
         <div className="grid-item">
@@ -77,4 +89,4 @@ function Questionnaire() {
   );
 }
 
-export default Questionnaire;
+export default EmojiQuiz;
